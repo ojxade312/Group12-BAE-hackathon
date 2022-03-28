@@ -1,4 +1,4 @@
-import query from "../db/index";
+import query from "../db/index.js";
 
 //GET ALL USERS
 export async function getAllUsers() {

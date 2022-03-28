@@ -1,13 +1,20 @@
-var express = require('express');
+import express from "express";
+
 var router = express.Router();
 
-import {getAllUsers, getUserById, addUser, updateUser, deleteUser} from '../models/users';
+import {
+  getAllUsers,
+  getUserById,
+  addUser,
+  updateUser,
+  deleteUser,
+} from "../models/users.js";
 
 const usersRouter = express.Router();
 usersRouter.use(express.json());
 
 /* GET users listing. */
-usersRouter.get('/', function(req, res) {
+usersRouter.get("/", async function (req, res) {
   const allUsers = await getAllUsers();
   res.json(allUsers);
 });
@@ -37,4 +44,4 @@ usersRouter.delete("/:id", async function (req, res) {
   res.json(deletedUser);
 });
 
-module.exports = usersRouter;
+export default usersRouter;
