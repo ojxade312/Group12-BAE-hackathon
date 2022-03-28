@@ -2,8 +2,12 @@
   "name": "group12-bae-hackathon",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node -r dotenv/config ./bin/www",
+    "dev": "nodemon -r dotenv/config ./bin/www",
+    "dbcreateUsersTable": "node -r dotenv/config ./db/scripts/createUsersTable.js",
+    "dbpopulateUsersTable": "node -r dotenv/config ./db/scripts/populateUsersTable.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -11,6 +15,11 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
   }
 }
