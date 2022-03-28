@@ -28,15 +28,18 @@ app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  res.status(404).json({
-    message: "We couldn't find what you were looking for 😞",
-  });
+  next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).json(err);
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
 });
 
 export default app;
