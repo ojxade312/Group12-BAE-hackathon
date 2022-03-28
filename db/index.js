@@ -3,7 +3,7 @@ import dbconfig from "../config.js";
 
 const pool = new pg.Pool({
   user: dbconfig.user,
-  host: dbconfig.dbhost,
+  host: dbconfig.host,
   database: dbconfig.db,
   password: dbconfig.password,
   port: dbconfig.dbport,
